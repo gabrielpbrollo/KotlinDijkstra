@@ -1,4 +1,5 @@
 class GraphNode(
+    val name: String,
     val neighbors: List<Neighbor>
 ) {
     var processed: Boolean = false
@@ -7,6 +8,6 @@ class GraphNode(
 
     class Neighbor(
         val name: String,
-        private val cost: Int
+        val cost: Int
     )
 }

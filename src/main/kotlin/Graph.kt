@@ -18,4 +18,12 @@ class Graph(
             .values
             .first { !it.hasNeighbors() }
     }
+
+    fun getLowestCostNotProcessedNode(costTable: CostsTable): GraphNode? {
+        val result = costTable.getOrderedByCost()
+            .firstOrNull { graphNodes[it.key]?.processed == false }
+            ?: return null
+
+        return graphNodes[result.key]
+    }
 }
