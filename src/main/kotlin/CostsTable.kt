@@ -6,11 +6,11 @@ class CostsTable {
         table[nodeName] = newCost
     }
 
-    fun getOrderedByCost() = table.entries.sortedBy { it.value.cost }
-
     fun getCost(nodeName: String) = table[nodeName]
 
-    fun getPath(end: GraphNode): String {
+    fun getOrderedByCost() = table.entries.sortedBy { it.value.cost }
+
+    fun getPath(end: GraphNode): List<String> {
         val reversePath = mutableListOf<String>()
 
         var parent = end.name
@@ -22,9 +22,7 @@ class CostsTable {
             reversePath.add(parent)
         }
 
-        return reversePath
-            .reversed()
-            .joinToString(separator = " -> ")
+        return reversePath.reversed()
     }
 
     private fun getParent(parent: String) = table[parent]?.parent

@@ -1,8 +1,9 @@
-class GraphNode(
-    val name: String,
+interface GraphNode {
+
+    val name: String
     val neighbors: List<Neighbor>
-) {
-    var processed: Boolean = false
+
+    var processed: Boolean
 
     fun hasNeighbors() = neighbors.isNotEmpty()
 
