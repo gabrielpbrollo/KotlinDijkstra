@@ -46,30 +46,43 @@ fun printGraph(graph: Graph) {
 private fun createGraph(): Graph {
     val graphNodes = mutableListOf<GraphNode>()
 
-    val endName = "end"
-    val end = GraphNodeDemo(endName, emptyList())
-    graphNodes.add(end)
+    val pianoName = "piano"
+    val piano = GraphNodeDemo(pianoName, emptyList())
+    graphNodes.add(piano)
 
-    val aNeighbors = mutableListOf<GraphNode.Neighbor>()
-    aNeighbors.add(GraphNode.Neighbor(endName, 1))
-    val aName = "a"
-    val a = GraphNodeDemo(aName, aNeighbors)
-    graphNodes.add(a)
+    val bassNeighbors = mutableListOf<GraphNode.Neighbor>()
+    bassNeighbors.add(GraphNode.Neighbor(pianoName, 20))
+    val bassName = "bass guitar"
+    val bass = GraphNodeDemo(bassName, bassNeighbors)
+    graphNodes.add(bass)
 
-    val bNeighbors = mutableListOf<GraphNode.Neighbor>()
-    bNeighbors.add(GraphNode.Neighbor(endName, 5))
-    bNeighbors.add(GraphNode.Neighbor(aName, 3))
-    val bName = "b"
-    val b = GraphNodeDemo(bName, bNeighbors)
-    graphNodes.add(b)
+    val drumSetNeighbors = mutableListOf<GraphNode.Neighbor>()
+    drumSetNeighbors.add(GraphNode.Neighbor(pianoName, 10))
+    val drumSetName = "drum set"
+    val drum = GraphNodeDemo(drumSetName, drumSetNeighbors)
+    graphNodes.add(drum)
+
+    val posterNeighbor = mutableListOf<GraphNode.Neighbor>()
+    posterNeighbor.add(GraphNode.Neighbor(drumSetName, 35))
+    posterNeighbor.add(GraphNode.Neighbor(bassName, 30))
+    val posterName = "poster"
+    val poster = GraphNodeDemo(posterName, posterNeighbor)
+    graphNodes.add(poster)
+
+    val rareLpNeighbors = mutableListOf<GraphNode.Neighbor>()
+    rareLpNeighbors.add(GraphNode.Neighbor(bassName, 15))
+    rareLpNeighbors.add(GraphNode.Neighbor(drumSetName, 20))
+    val rareLpName = "rare lp"
+    val rareLp = GraphNodeDemo(rareLpName, rareLpNeighbors)
+    graphNodes.add(rareLp)
 
 
-    val startNeighbors = mutableListOf<GraphNode.Neighbor>()
-    startNeighbors.add(GraphNode.Neighbor(aName, 6))
-    startNeighbors.add(GraphNode.Neighbor(bName, 2))
-    val startName = "start"
-    val start = GraphNodeDemo(startName, startNeighbors)
-    graphNodes.add(start)
+    val bookNeighbors = mutableListOf<GraphNode.Neighbor>()
+    bookNeighbors.add(GraphNode.Neighbor(rareLpName, 5))
+    bookNeighbors.add(GraphNode.Neighbor(posterName, 0))
+    val bookName = "book"
+    val book = GraphNodeDemo(bookName, bookNeighbors)
+    graphNodes.add(book)
 
     val hashMapNodes = createHashMap(graphNodes)
 
